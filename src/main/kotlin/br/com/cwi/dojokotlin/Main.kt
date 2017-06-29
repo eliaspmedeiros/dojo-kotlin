@@ -1,26 +1,20 @@
 package br.com.cwi.dojokotlin
 
-import br.com.cwi.dojokotlin.helper.authorCount
-import br.com.cwi.dojokotlin.helper.buildLogSentence
-import br.com.cwi.dojokotlin.helper.suggestMe
+import br.com.cwi.dojokotlin.model.Author as BookAuthor
+import java.text.SimpleDateFormat
 
 object Main {
 
     @JvmStatic
     fun main(args: Array<String>) {
-//        printSomething()
 
-        println("Total de autores: ${authorCount()}")
+        val author = BookAuthor(name = "jostein gaarder", birth = SimpleDateFormat("dd-MM-yyyy").parse("08-08-1952"))
 
-        buildLogSentence()
-        buildLogSentence("Autor", "removido")
-        buildLogSentence("Box", count = 1)
-        buildLogSentence(count = 4, action = "perdido", subject = "livro")
+        val deadAuthor = BookAuthor("arthur C. clarke", birth = SimpleDateFormat("dd-MM-yyyy").parse("16-12-1917"),
+                death = SimpleDateFormat("dd-MM-yyyy").parse("19-03-2008"))
 
-        println(suggestMe())
-        println(suggestMe("AUTHOR"))
-        println(suggestMe("BOOK"))
+        println(author.getAgeIn())
+        println(deadAuthor.getAgeIn())
     }
-
 
 }
