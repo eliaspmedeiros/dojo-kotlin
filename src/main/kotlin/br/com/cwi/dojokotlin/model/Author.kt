@@ -3,7 +3,7 @@ package br.com.cwi.dojokotlin.model
 import br.com.cwi.dojokotlin.helper.getYearsBetweenDates
 import java.util.Date
 
-class Author(var name: String, var gender: String? = "M", val birth: Date) {
+data class Author(var name: String, var gender: String? = "M", val birth: Date) : BaseModel() {
     init {
         name = name.toUpperCase()
     }
