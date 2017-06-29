@@ -29,4 +29,4 @@ fun suggestMe(type: String = ""): String {
     }
 }
 
-fun doesAuthorSuck(name: String?): Boolean = if (name == "Paulo Coelho") true else false
+fun authorSucks(name: String?): String = if (name == "Paulo Coelho") "a lot" else "not so much"

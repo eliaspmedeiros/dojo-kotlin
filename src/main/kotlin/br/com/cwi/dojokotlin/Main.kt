@@ -1,6 +1,7 @@
 package br.com.cwi.dojokotlin
 
 import br.com.cwi.dojokotlin.helper.authorCount
+import br.com.cwi.dojokotlin.helper.authorSucks
 import br.com.cwi.dojokotlin.helper.buildLogSentence
 import br.com.cwi.dojokotlin.helper.suggestMe
 
@@ -20,6 +21,9 @@ object Main {
         println(suggestMe())
         println(suggestMe("AUTHOR"))
         println(suggestMe("BOOK"))
+
+        println(authorSucks("Carlos"))
+        println(authorSucks("Paulo Coelho"))
     }
 
 
