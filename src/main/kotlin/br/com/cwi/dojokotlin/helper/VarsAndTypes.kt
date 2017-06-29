@@ -17,6 +17,16 @@ private val authors = arrayListOf("Stephen King", "Mario Puzo", "J. R. R. Tolkie
 
 fun authorCount() = authors.size
 
-fun buildSentence(subject: String = "livro", action: String = "adicionado", count: Int = 1) {
+fun buildLogSentence(subject: String = "livro", action: String = "adicionado", count: Int = 1) {
     println("Total de $count $subject $action")
 }
+
+fun suggestMe(type: String = ""): String {
+    return when(type) {
+        "AUTHOR" -> "Paulo Coelho"
+        "BOOK", "BOX" -> "Lord of the Rings"
+        else -> "Sugiro você ser mais específico"
+    }
+}
+
+fun doesAuthorSuck(name: String?): Boolean = if (name == "Paulo Coelho") true else false
