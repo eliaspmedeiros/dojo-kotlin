@@ -3,8 +3,6 @@ package br.com.cwi.dojokotlin.helper
 import br.com.cwi.dojokotlin.model.Author
 import br.com.cwi.dojokotlin.model.Book
 import br.com.cwi.dojokotlin.model.BookType
-import java.text.SimpleDateFormat
-import java.util.*
 
 object DataSource {
 
