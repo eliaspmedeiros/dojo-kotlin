@@ -1,5 +1,8 @@
 package br.com.cwi.dojokotlin
 
+/**
+ * Item que pode ser vendido.
+ */
 interface SellableItem {
 
     var name: String

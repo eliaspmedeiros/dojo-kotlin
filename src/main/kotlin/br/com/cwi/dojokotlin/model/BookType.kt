@@ -1,4 +1,7 @@
 package br.com.cwi.dojokotlin.model
 
-enum class BookType {
+sealed class BookType {
+
+    ROMANCE, NOVEL
+
 }

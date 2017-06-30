@@ -1,7 +1,7 @@
 package br.com.cwi.dojokotlin
 
 /**
- * SellableItem que pode ser utilizado em uma listagem.
+ * Item que pode ser utilizado em uma listagem.
  */
 interface ListItem {
 

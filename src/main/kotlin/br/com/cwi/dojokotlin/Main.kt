@@ -18,6 +18,10 @@ object Main {
         println(book.getDescription())
         println(pocketbook.getDescription())
         println(pocketbook.getAuthorName())
+
+
+
+        println("Encontrado: " + Book.lookup("O Mundo de sofia")?.name)
     }
 
 }
