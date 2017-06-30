@@ -12,4 +12,8 @@ interface SellableItem {
         return "$name - R$${price}"
     }
 
+    fun getPriceWithDiscount(perc: Int = 0): Double {
+        return 
+    }
+
 }

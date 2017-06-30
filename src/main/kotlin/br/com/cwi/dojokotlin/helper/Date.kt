@@ -1,10 +1,8 @@
 package br.com.cwi.dojokotlin.helper
 
+import java.text.SimpleDateFormat
 import java.util.*
 
-fun buildLogSentence(subject: String = "livro", action: String = "adicionado", count: Int = 1) {
-    println("Total de $count $subject $action")
-}
 
 /**
  * Exemplo de tratamento contra null: safe ?. call
@@ -17,3 +15,6 @@ fun getYearsBetweenDates(start: Date, end: Date? = null): Int {
 
     return years
 }
+
+// Kotlin ainda nao suporta extensão de métodos "estáticos"
+fun Date.create(format: String, value: String): Date = SimpleDateFormat(format).parse(value)

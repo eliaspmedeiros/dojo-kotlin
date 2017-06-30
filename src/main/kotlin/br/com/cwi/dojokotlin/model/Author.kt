@@ -12,11 +12,7 @@ class Author(override var name: String, var gender: String? = "M", val birth: Da
     var death: Date? = null
 
     constructor(name: String, gender: String? = "M", birth: Date, death: Date) : this(name, gender, birth) {
-        if (death < birth) {
-            throw IllegalArgumentException("Data de morte é menor que nascimento")
-        }
-
-        this.death = death
+        this.death = if (death < birth) death else deathDateError()
     }
 
     /**
@@ -29,5 +25,8 @@ class Author(override var name: String, var gender: String? = "M", val birth: Da
             else -> "Idade do autor $name é de ${getYearsBetweenDates(birth, date)} anos."
         }
     }
+
+    // O tipo Nothing indica que a execução nunca passará do ponto onde esta função foi chamada
+    fun deathDateError(): Nothing = throw IllegalArgumentException("Data de morte é menor que nascimento")
 
 }
