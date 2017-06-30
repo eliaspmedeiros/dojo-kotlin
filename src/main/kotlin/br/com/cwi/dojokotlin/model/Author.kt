@@ -1,9 +1,10 @@
 package br.com.cwi.dojokotlin.model
 
+import br.com.cwi.dojokotlin.ListItem
 import br.com.cwi.dojokotlin.helper.getYearsBetweenDates
 import java.util.Date
 
-data class Author(var name: String, var gender: String? = "M", val birth: Date) : BaseModel() {
+class Author(override var name: String, var gender: String? = "M", val birth: Date) : BaseModel(), ListItem {
     init {
         name = name.toUpperCase()
     }

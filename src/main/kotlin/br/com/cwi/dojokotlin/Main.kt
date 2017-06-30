@@ -1,6 +1,8 @@
 package br.com.cwi.dojokotlin
 
-import br.com.cwi.dojokotlin.model.Author as BookAuthor
+import br.com.cwi.dojokotlin.model.Author
+import br.com.cwi.dojokotlin.model.Book
+import br.com.cwi.dojokotlin.model.PocketBook
 import java.text.SimpleDateFormat
 
 object Main {
@@ -8,13 +10,14 @@ object Main {
     @JvmStatic
     fun main(args: Array<String>) {
 
-        val author = BookAuthor(name = "jostein gaarder", birth = SimpleDateFormat("dd-MM-yyyy").parse("08-08-1952"))
+        val author = Author("Stephen King", birth = SimpleDateFormat("dd-MM-yyyy").parse("21-09-1947"))
+        val book = Book("O Iluminado", 49.9, author)
 
-        val deadAuthor = BookAuthor("arthur C. clarke", birth = SimpleDateFormat("dd-MM-yyyy").parse("16-12-1917"),
-                death = SimpleDateFormat("dd-MM-yyyy").parse("19-03-2008"))
+        val pocketbook = PocketBook("Quatro Estações", 29.9, author)
 
-        println(author.getAgeIn())
-        println(deadAuthor.getAgeIn())
+        println(book.getDescription())
+        println(pocketbook.getDescription())
+        println(pocketbook.getAuthorName())
     }
 
 }
