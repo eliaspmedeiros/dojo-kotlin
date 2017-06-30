@@ -1,22 +1,36 @@
 package br.com.cwi.dojokotlin.model
 
 import br.com.cwi.dojokotlin.ListItem
+import br.com.cwi.dojokotlin.helper.DEFAULT_FORMAT
+import br.com.cwi.dojokotlin.helper.create
 import br.com.cwi.dojokotlin.helper.getYearsBetweenDates
 import java.util.Date
 
-class Author(override var name: String, var gender: String? = "M", val birth: Date) : BaseModel(), ListItem {
+class Author(override var name: String, var gender: String = "M", val birth: Date) : BaseModel(), ListItem {
     init {
         name = name.toUpperCase()
     }
 
+    companion object {
+        private fun parseDate(value: String?): Date? {
+            return if (value != null) Date().create(DEFAULT_FORMAT, value) else null
+        }
+    }
+
     var death: Date? = null
 
-    constructor(name: String, gender: String? = "M", birth: Date, death: Date) : this(name, gender, birth) {
-        this.death = if (death < birth) death else deathDateError()
+    // Nem tudo são flores no Kotlin.
+    constructor(name: String, gender: String = "M", birth: Date, death: Date?) : this(name, gender, birth) {
+        this.death = if (death == null || death > birth) death else deathDateError()
     }
 
     /**
-     * Retorna a idade que o autor teria em qualquer data.
+     * Permite construção com datas como String, desde que utilizado o formato definido na constante DEFAULT_FORMAT
+     */
+    constructor(name: String, gender: String = "M", birth: String, death: String? = null) : this(name, gender, parseDate(birth)!!, parseDate(death))
+
+    /**
+     * Retorna a idade que o autor teria em qualquer data posterior ao seu nascimento.
      */
     fun getAgeIn(date: Date = Date()): String {
         return when {

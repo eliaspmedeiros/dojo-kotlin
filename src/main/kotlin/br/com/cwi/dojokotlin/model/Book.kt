@@ -1,14 +1,15 @@
 package br.com.cwi.dojokotlin.model
 
-import br.com.cwi.dojokotlin.SellableItem
+import br.com.cwi.dojokotlin.SaleableItem
 import br.com.cwi.dojokotlin.ListItem
 import br.com.cwi.dojokotlin.helper.DataSource
 
 open class Book(
     override var name: String,
     override var price: Double,
-    val author: Author
-) : BaseModel(), ListItem, SellableItem {
+    val author: Author,
+    val type: BookType = BookType.ROMANCE
+) : BaseModel(), ListItem, SaleableItem {
 
     // Funções de um companion object podem ser chamadas como se fosse estáticas.
     // Mas para o serem realmente, é necessária a anotação @JvmStatic
@@ -17,11 +18,24 @@ open class Book(
             // O find retorna o primeiro item que satisfizer a condição do lambda
             return DataSource.books.find { it.name.toLowerCase() == search.toLowerCase() }
         }
+
+        fun getRomanceBooksNames(): ArrayList<String> {
+            val bookNames: ArrayList<String> = ArrayList()
+
+            for (book in DataSource.books) {
+                // continue retorna nothing
+                val bookName = if (book.type == BookType.ROMANCE) book.name else continue
+
+                bookNames.add(bookName)
+            }
+
+            return bookNames
+        }
     }
 
     override fun getDescription(): String {
-        // Delega a função para uma das interfaces
-        return super<SellableItem>.getDescription()
+        // Delega para uma das interfaces
+        return super<SaleableItem>.getDescription()
     }
 
     // Necessário adicionar o open para permitir override

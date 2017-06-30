@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+const val DEFAULT_FORMAT = "dd/MM/yyyy"
+
 /**
  * Exemplo de tratamento contra null: safe ?. call
  */
