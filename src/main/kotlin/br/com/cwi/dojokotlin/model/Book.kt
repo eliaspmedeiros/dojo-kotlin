@@ -1,6 +1,6 @@
 package br.com.cwi.dojokotlin.model
 
-import br.com.cwi.dojokotlin.SellableItem
+import br.com.cwi.dojokotlin.SaleableItem
 import br.com.cwi.dojokotlin.ListItem
 import br.com.cwi.dojokotlin.helper.DataSource
 
@@ -8,7 +8,7 @@ open class Book(
     override var name: String,
     override var price: Double,
     val author: Author
-) : BaseModel(), ListItem, SellableItem {
+) : BaseModel(), ListItem, SaleableItem {
 
     // Funções de um companion object podem ser chamadas como se fosse estáticas.
     // Mas para o serem realmente, é necessária a anotação @JvmStatic
@@ -21,7 +21,7 @@ open class Book(
 
     override fun getDescription(): String {
         // Delega a função para uma das interfaces
-        return super<SellableItem>.getDescription()
+        return super<SaleableItem>.getDescription()
     }
 
     // Necessário adicionar o open para permitir override

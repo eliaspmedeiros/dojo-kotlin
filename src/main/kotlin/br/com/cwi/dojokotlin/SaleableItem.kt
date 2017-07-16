@@ -3,7 +3,7 @@ package br.com.cwi.dojokotlin
 /**
  * Item que pode ser vendido.
  */
-interface SellableItem {
+interface SaleableItem {
 
     var name: String
     var price: Double
