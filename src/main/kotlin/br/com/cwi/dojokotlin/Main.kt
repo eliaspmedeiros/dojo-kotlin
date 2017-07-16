@@ -17,6 +17,7 @@ object Main {
         val bookStore = BookStore(bookStock)
 
         fun success() = println("Sucesso")
+
         bookStore.sellItem(book, { println("Sucesso") }, { println("falha") })
         bookStore.sellItem(book, ::success, ::failure)
     }
