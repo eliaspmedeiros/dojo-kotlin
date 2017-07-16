@@ -11,16 +11,16 @@ fun buildLogSentence(subject: String = "livro", action: String = "adicionado", c
  */
 fun getYearsBetweenDates(start: Date, end: Date? = null): Int {
     val diffMillis = end?.time?.minus(start.time)
-    val deltaDays = Math.ceil(diffMillis?.div((86400.0 * 1000.0)) as Double).toInt() / 365
+    val years = Math.ceil(diffMillis?.div((86400.0 * 1000.0)) as Double).toInt() / 365
 
-    return deltaDays
+    return years
 }
 
 fun getYearsBetweenDatesToo(start: Date, end: Date? = null): Int {
     val safeEnd = end ?: Date()
 
     val diffMillis = safeEnd.time - start.time
-    val deltaDays = Math.ceil(diffMillis / (86400.0 * 1000.0)).toInt() / 365
+    val years = Math.ceil(diffMillis / (86400.0 * 1000.0)).toInt() / 365
 
-    return deltaDays
+    return years
 }
