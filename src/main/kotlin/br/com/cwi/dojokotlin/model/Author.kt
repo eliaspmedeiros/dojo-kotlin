@@ -22,11 +22,13 @@ class Author(var name: String, var gender: String? = "M", val birth: Date) {
      * Retorna a idade que o autor teria em qualquer data.
      */
     fun getAgeIn(date: Date = Date()): String {
-        return when {
+        val text = when {
             date < birth -> "Data anterior ao nascimento"
             date == birth -> "Data igual ao nascimento"
             else -> "Idade do autor $name é de ${getYearsBetweenDates(birth, date)} anos."
         }
+
+        return text
     }
 
 }
