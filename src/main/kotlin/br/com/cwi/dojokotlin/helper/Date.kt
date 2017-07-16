@@ -19,4 +19,7 @@ fun getYearsBetweenDates(start: Date, end: Date? = null): Int {
 }
 
 // Kotlin ainda nao suporta extensão de métodos "estáticos"
-fun Date.create(format: String, value: String): Date = SimpleDateFormat(format).parse(value)
+fun Date.set(format: String, value: String): Date {
+    this.time = SimpleDateFormat(format).parse(value).time
+    return this
+}

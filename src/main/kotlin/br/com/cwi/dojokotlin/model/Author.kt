@@ -2,18 +2,20 @@ package br.com.cwi.dojokotlin.model
 
 import br.com.cwi.dojokotlin.ListItem
 import br.com.cwi.dojokotlin.helper.DEFAULT_FORMAT
-import br.com.cwi.dojokotlin.helper.create
+import br.com.cwi.dojokotlin.helper.set
 import br.com.cwi.dojokotlin.helper.getYearsBetweenDates
 import java.util.Date
 
-class Author(override var name: String, var gender: String = "M", val birth: Date) : BaseModel(), ListItem {
-    init {
-        name = name.toUpperCase()
-    }
+class Author(name: String, var gender: String = "M", val birth: Date) : BaseModel(), ListItem {
+    override var name: String = name
+        get() = field
+        set(value) {
+           field = value.capitalize()
+        }
 
     companion object {
         private fun parseDate(value: String?): Date? {
-            return if (value != null) Date().create(DEFAULT_FORMAT, value) else null
+            return if (value != null) Date().set(DEFAULT_FORMAT, value) else null
         }
     }
 
